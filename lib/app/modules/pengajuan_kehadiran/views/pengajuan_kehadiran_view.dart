@@ -46,99 +46,104 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
             child: Obx(() {
               return CustomFilledButton(
                 onPressed: () {
-                  Get.dialog(
-                    Center(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 14),
-                        height: 360,
-                        width: MediaQuery.of(context).size.width - 52,
-                        decoration: BoxDecoration(
-                            color: neutral100,
-                            borderRadius: BorderRadius.circular(4)),
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Image.asset(
-                                    'assets/images/ic_close.png',
-                                    width: 25,
+                  if (controller.clockin.value != '' &&
+                      controller.clockout.value != '' &&
+                      controller.nameDokumen.value != '' &&
+                      controller.textDeskripsi.value != '') {
+                    Get.dialog(
+                      Center(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 14),
+                          height: 360,
+                          width: MediaQuery.of(context).size.width - 52,
+                          decoration: BoxDecoration(
+                              color: neutral100,
+                              borderRadius: BorderRadius.circular(4)),
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.back();
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Image.asset(
+                                      'assets/images/ic_close.png',
+                                      width: 25,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Center(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const SizedBox(
-                                    height: 42,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/img_grafis1.png',
-                                    width: 140,
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 30),
-                                    child: RichText(
-                                      textAlign: TextAlign.center,
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text:
-                                                'Pengajuan kehadiran Clock out pada',
-                                            style: plusJakartaSansTextStyle
-                                                .copyWith(
-                                                    fontSize: 12,
-                                                    color: neutral600),
-                                          ),
-                                          TextSpan(
-                                            text: ' 05 Oktober 2023 ',
-                                            style: plusJakartaSansTextStyle
-                                                .copyWith(
-                                                    fontSize: 12,
-                                                    color: neutral600,
-                                                    fontWeight: bold),
-                                          ),
-                                          TextSpan(
-                                            text: 'telah terkirim',
-                                            style: plusJakartaSansTextStyle
-                                                .copyWith(
-                                                    fontSize: 12,
-                                                    color: neutral600),
-                                          ),
-                                        ],
+                              Center(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: 42,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/img_grafis1.png',
+                                      width: 140,
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30),
+                                      child: RichText(
+                                        textAlign: TextAlign.center,
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text:
+                                                  'Pengajuan kehadiran Clock out pada',
+                                              style: plusJakartaSansTextStyle
+                                                  .copyWith(
+                                                      fontSize: 12,
+                                                      color: neutral600),
+                                            ),
+                                            TextSpan(
+                                              text: ' 05 Oktober 2023 ',
+                                              style: plusJakartaSansTextStyle
+                                                  .copyWith(
+                                                      fontSize: 12,
+                                                      color: neutral600,
+                                                      fontWeight: bold),
+                                            ),
+                                            TextSpan(
+                                              text: 'telah terkirim',
+                                              style: plusJakartaSansTextStyle
+                                                  .copyWith(
+                                                      fontSize: 12,
+                                                      color: neutral600),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  CustomFilledButton(
-                                    title: 'Kembali',
-                                    onPressed: () {
-                                      Get.back();
-                                    },
-                                    height: 45,
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    CustomFilledButton(
+                                      title: 'Kembali',
+                                      onPressed: () {
+                                        Get.back();
+                                      },
+                                      height: 45,
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                 },
                 title: 'Kirim',
                 isActive: controller.clockin.value != '' &&

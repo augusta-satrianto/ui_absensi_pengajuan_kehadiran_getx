@@ -13,7 +13,7 @@ class PerubahanShiftView extends GetView<PerubahanShiftController> {
   const PerubahanShiftView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    late PageController _pageController;
+    late PageController pageController;
     bool showFab = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       appBar: AppBar(
@@ -41,83 +41,89 @@ class PerubahanShiftView extends GetView<PerubahanShiftController> {
           child: Obx(() {
             return CustomFilledButton(
               onPressed: () {
-                Get.dialog(
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14),
-                      height: 360,
-                      width: MediaQuery.of(context).size.width - 52,
-                      decoration: BoxDecoration(
-                          color: neutral100,
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: GestureDetector(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(15),
-                                child: Image.asset(
-                                  'assets/images/ic_close.png',
-                                  width: 25,
+                if (controller.tanggal.value != '' &&
+                    controller.shiftLama.value != '' &&
+                    controller.shiftBaru.value != '' &&
+                    controller.textAlasan.value != '') {
+                  Get.dialog(
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        height: 360,
+                        width: MediaQuery.of(context).size.width - 52,
+                        decoration: BoxDecoration(
+                            color: neutral100,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Image.asset(
+                                    'assets/images/ic_close.png',
+                                    width: 25,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  height: 42,
-                                ),
-                                Image.asset(
-                                  'assets/images/img_grafis1.png',
-                                  width: 140,
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30),
-                                  child: RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: 'Pengajuan cuti telah terkirim',
-                                          style:
-                                              plusJakartaSansTextStyle.copyWith(
-                                                  fontSize: 12,
-                                                  color: neutral600),
-                                        ),
-                                      ],
+                            Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const SizedBox(
+                                    height: 42,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/img_grafis1.png',
+                                    width: 140,
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30),
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                'Pengajuan cuti telah terkirim',
+                                            style: plusJakartaSansTextStyle
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: neutral600),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                CustomFilledButton(
-                                  title: 'Kembali',
-                                  onPressed: () {
-                                    Get.back();
-                                  },
-                                  height: 45,
-                                )
-                              ],
-                            ),
-                          )
-                        ],
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  CustomFilledButton(
+                                    title: 'Kembali',
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    height: 45,
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                );
+                  );
+                }
               },
               title: 'Kirim',
               isActive: controller.tanggal.value != '' &&
@@ -178,14 +184,14 @@ class PerubahanShiftView extends GetView<PerubahanShiftController> {
                                       return CalendarHeader(
                                         focusedDay: value,
                                         onLeftArrowTap: () {
-                                          _pageController.previousPage(
+                                          pageController.previousPage(
                                             duration:
                                                 Duration(milliseconds: 300),
                                             curve: Curves.easeOut,
                                           );
                                         },
                                         onRightArrowTap: () {
-                                          _pageController.nextPage(
+                                          pageController.nextPage(
                                             duration:
                                                 Duration(milliseconds: 300),
                                             curve: Curves.easeOut,
@@ -204,7 +210,7 @@ class PerubahanShiftView extends GetView<PerubahanShiftController> {
                                 ),
                                 TableCalendar(
                                   onCalendarCreated: (controller) =>
-                                      _pageController = controller,
+                                      pageController = controller,
                                   weekendDays: const [6, 7],
                                   daysOfWeekStyle: DaysOfWeekStyle(
                                       weekdayStyle: interTextStyle.copyWith(

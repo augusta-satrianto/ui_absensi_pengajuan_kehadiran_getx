@@ -43,83 +43,90 @@ class PengajuanCutiView extends GetView<PengajuanCutiController> {
           child: Obx(() {
             return CustomFilledButton(
               onPressed: () {
-                Get.dialog(
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14),
-                      height: 360,
-                      width: MediaQuery.of(context).size.width - 52,
-                      decoration: BoxDecoration(
-                          color: neutral100,
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: GestureDetector(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(15),
-                                child: Image.asset(
-                                  'assets/images/ic_close.png',
-                                  width: 25,
+                if (controller.jenisCuti.value != '' &&
+                    controller.tanggalMulai.value != '' &&
+                    controller.tanggalSelesai.value != '' &&
+                    controller.textAlasan.value != '' &&
+                    controller.nameFile.value != '') {
+                  Get.dialog(
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        height: 360,
+                        width: MediaQuery.of(context).size.width - 52,
+                        decoration: BoxDecoration(
+                            color: neutral100,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Image.asset(
+                                    'assets/images/ic_close.png',
+                                    width: 25,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  height: 42,
-                                ),
-                                Image.asset(
-                                  'assets/images/img_grafis1.png',
-                                  width: 140,
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30),
-                                  child: RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: 'Pengajuan cuti telah terkirim',
-                                          style:
-                                              plusJakartaSansTextStyle.copyWith(
-                                                  fontSize: 12,
-                                                  color: neutral600),
-                                        ),
-                                      ],
+                            Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const SizedBox(
+                                    height: 42,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/img_grafis1.png',
+                                    width: 140,
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30),
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                'Pengajuan cuti telah terkirim',
+                                            style: plusJakartaSansTextStyle
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: neutral600),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                CustomFilledButton(
-                                  title: 'Kembali',
-                                  onPressed: () {
-                                    Get.back();
-                                  },
-                                  height: 45,
-                                )
-                              ],
-                            ),
-                          )
-                        ],
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  CustomFilledButton(
+                                    title: 'Kembali',
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    height: 45,
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                );
+                  );
+                }
               },
               title: 'Kirim',
               isActive: controller.jenisCuti.value != '' &&
@@ -166,8 +173,11 @@ class PengajuanCutiView extends GetView<PengajuanCutiController> {
                     Container(
                       width: double.infinity,
                       height: 800,
-                      padding:
-                          const EdgeInsets.only(top: 16, right: 26, left: 26),
+                      padding: const EdgeInsets.only(
+                        top: 16,
+                        right: 26,
+                        left: 26,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: const BorderRadius.vertical(
@@ -211,11 +221,11 @@ class PengajuanCutiView extends GetView<PengajuanCutiController> {
                           ),
                           Obx(() {
                             return controller.indexActive != 99
-                                ? SizedBox(
-                                    height: 356.4,
-                                    width: double.infinity,
+                                ? Expanded(
                                     child: ListView.separated(
                                       itemCount: list.length,
+                                      padding:
+                                          const EdgeInsets.only(bottom: 10),
                                       itemBuilder: (context, index) {
                                         return Row(
                                           mainAxisAlignment:
@@ -848,6 +858,9 @@ class PengajuanCutiView extends GetView<PengajuanCutiController> {
           // Unggah File
           CustomUploadFilePath(
             controllerFile: controller.fileController,
+          ),
+          const SizedBox(
+            height: 200,
           )
         ],
       ),
