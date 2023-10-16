@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:ui_absensi_pengajuan_kehadiran_getx/app/modules/pengajuan_kehadiran/views/pengajuan_kehadiran_view.dart';
-// import 'package:ui_absensi_pengajuan_kehadiran_getx/app/routes/app_pages.dart';
 import 'package:ui_absensi_pengajuan_kehadiran_getx/config/theme.dart';
 
 import '../../../components/buttons.dart';
@@ -21,7 +20,7 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Riwayat Kehadiran'),
-        titleTextStyle: GoogleFonts.plusJakartaSans(
+        titleTextStyle: plusJakartaSansTextStyle.copyWith(
             color: neutral600, fontSize: 20, fontWeight: semiBold),
         elevation: 0,
         backgroundColor: Colors.white,
@@ -32,7 +31,9 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
             Icons.arrow_back_ios,
             size: 16,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
         ),
       ),
       body: Column(
@@ -72,11 +73,11 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
                       _pageController = controller,
                   weekendDays: const [6, 7],
                   daysOfWeekStyle: DaysOfWeekStyle(
-                      weekdayStyle: GoogleFonts.inter(
+                      weekdayStyle: interTextStyle.copyWith(
                           fontSize: 13,
                           fontWeight: medium,
                           color: const Color(0xFF333333)),
-                      weekendStyle: GoogleFonts.inter(
+                      weekendStyle: interTextStyle.copyWith(
                           fontSize: 13,
                           fontWeight: medium,
                           color: const Color(0xFF333333))),
@@ -93,17 +94,17 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
                   calendarStyle: CalendarStyle(
                     isTodayHighlighted: false,
                     cellMargin: const EdgeInsets.all(3),
-                    todayTextStyle: GoogleFonts.inter(
+                    todayTextStyle: interTextStyle.copyWith(
                         color: const Color(0xFFFFFFFF),
                         fontWeight: medium,
                         fontSize: 13),
                     todayDecoration: const BoxDecoration(
                         color: Colors.amber, shape: BoxShape.circle),
-                    weekendTextStyle: GoogleFonts.inter(
+                    weekendTextStyle: interTextStyle.copyWith(
                         color: const Color(0xFFE2313D),
                         fontWeight: medium,
                         fontSize: 13),
-                    defaultTextStyle: GoogleFonts.inter(
+                    defaultTextStyle: interTextStyle.copyWith(
                         color: const Color(0xFF666666),
                         fontWeight: medium,
                         fontSize: 13),
@@ -166,23 +167,26 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
                                       Text(
                                         DateFormat('dd MMMM yyyy')
                                             .format(selectedDay),
-                                        style: GoogleFonts.plusJakartaSans(
-                                            fontSize: 16,
-                                            fontWeight: bold,
-                                            color: neutral600),
+                                        style:
+                                            plusJakartaSansTextStyle.copyWith(
+                                                fontSize: 16,
+                                                fontWeight: bold,
+                                                color: neutral600),
                                       ),
                                       const SizedBox(
                                         height: 3,
                                       ),
                                       Text(
                                         DateFormat('EEEE').format(selectedDay),
-                                        style: GoogleFonts.plusJakartaSans(
-                                            fontSize: 12, color: neutral600),
+                                        style:
+                                            plusJakartaSansTextStyle.copyWith(
+                                                fontSize: 12,
+                                                color: neutral600),
                                       )
                                     ],
                                   ),
                                   Image.asset(
-                                    'assets/ic_calendar.png',
+                                    'assets/images/ic_calendar.png',
                                     width: 34,
                                   )
                                 ],
@@ -207,11 +211,12 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
                                             indicatorHeight: 4,
                                             indicatorColor: warning600),
                                         labelColor: neutral600,
-                                        labelStyle: GoogleFonts.plusJakartaSans(
-                                            fontWeight: bold, fontSize: 12),
+                                        labelStyle:
+                                            plusJakartaSansTextStyle.copyWith(
+                                                fontWeight: bold, fontSize: 12),
                                         unselectedLabelColor: neutral200,
                                         unselectedLabelStyle:
-                                            GoogleFonts.plusJakartaSans(
+                                            plusJakartaSansTextStyle.copyWith(
                                                 fontSize: 12),
                                         tabs: const [
                                           Tab(
@@ -234,58 +239,70 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
                                               children: [
                                                 Text(
                                                   'Waktu clock in',
-                                                  style: GoogleFonts
-                                                      .plusJakartaSans(
-                                                          fontSize: 12,
-                                                          fontWeight: bold,
-                                                          color: neutral600),
+                                                  style:
+                                                      plusJakartaSansTextStyle
+                                                          .copyWith(
+                                                              fontSize: 12,
+                                                              fontWeight: bold,
+                                                              color:
+                                                                  neutral600),
                                                 ),
                                                 const SizedBox(
                                                   height: 10,
                                                 ),
                                                 Text('Tidak ada data',
-                                                    style: GoogleFonts
-                                                        .plusJakartaSans(
-                                                            fontSize: 11,
-                                                            color: danger600)),
+                                                    style:
+                                                        plusJakartaSansTextStyle
+                                                            .copyWith(
+                                                                fontSize: 11,
+                                                                color:
+                                                                    danger600)),
                                                 const SizedBox(
                                                   height: 10,
                                                 ),
                                                 Text(
                                                     'Shift Pagi (07.00 - 12.00)',
-                                                    style: GoogleFonts
-                                                        .plusJakartaSans(
-                                                            fontSize: 11,
-                                                            color: neutral600))
+                                                    style:
+                                                        plusJakartaSansTextStyle
+                                                            .copyWith(
+                                                                fontSize: 11,
+                                                                color:
+                                                                    neutral600))
                                               ],
                                             ),
                                             Column(
                                               children: [
                                                 Text(
                                                   'Waktu clock out',
-                                                  style: GoogleFonts
-                                                      .plusJakartaSans(
-                                                          fontSize: 12,
-                                                          fontWeight: bold,
-                                                          color: neutral600),
+                                                  style:
+                                                      plusJakartaSansTextStyle
+                                                          .copyWith(
+                                                              fontSize: 12,
+                                                              fontWeight: bold,
+                                                              color:
+                                                                  neutral600),
                                                 ),
                                                 const SizedBox(
                                                   height: 10,
                                                 ),
                                                 Text('Tidak ada data',
-                                                    style: GoogleFonts
-                                                        .plusJakartaSans(
-                                                            fontSize: 11,
-                                                            color: danger600)),
+                                                    style:
+                                                        plusJakartaSansTextStyle
+                                                            .copyWith(
+                                                                fontSize: 11,
+                                                                color:
+                                                                    danger600)),
                                                 const SizedBox(
                                                   height: 10,
                                                 ),
                                                 Text(
                                                     'Shift Pagi (07.00 - 12.00)',
-                                                    style: GoogleFonts
-                                                        .plusJakartaSans(
-                                                            fontSize: 11,
-                                                            color: neutral600))
+                                                    style:
+                                                        plusJakartaSansTextStyle
+                                                            .copyWith(
+                                                                fontSize: 11,
+                                                                color:
+                                                                    neutral600))
                                               ],
                                             ),
                                           ],
@@ -304,8 +321,6 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
                                   Get.to(PengajuanKehadiranView(
                                     dateTime: selectedDay,
                                   ));
-                                  // Get.toNamed(Routes.PENGAJUAN_KEHADIRAN,
-                                  //     arguments: selectedDay);
                                 })
                           ],
                         ),
@@ -328,7 +343,7 @@ class RiwayatPresensiView extends GetView<RiwayatPresensiController> {
                             child: Center(
                               child: Text(
                                 DateFormat('d').format(day),
-                                style: GoogleFonts.inter(
+                                style: interTextStyle.copyWith(
                                     color: const Color(0xFFFFFFFF),
                                     fontWeight: medium,
                                     fontSize: 13),

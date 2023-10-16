@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:intl/intl.dart';
 import 'package:ui_absensi_pengajuan_kehadiran_getx/config/theme.dart';
 
@@ -23,7 +23,7 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pengajuan Kehadiran'),
-        titleTextStyle: GoogleFonts.plusJakartaSans(
+        titleTextStyle: plusJakartaSansTextStyle.copyWith(
             color: neutral600, fontSize: 20, fontWeight: semiBold),
         titleSpacing: 0,
         leading: IconButton(
@@ -42,99 +42,113 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
       floatingActionButton: Visibility(
         visible: !showFab,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 0, 24, 50),
-          child: CustomFilledButton(
-            onPressed: () {
-              Get.dialog(Center(
-                child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 14),
-                          height: 360,
-                          width: MediaQuery.of(context).size.width - 52,
-                          decoration: BoxDecoration(
-                color: neutral100,
-                borderRadius: BorderRadius.circular(4)
-                          ),
-                          child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 50),
+            child: Obx(() {
+              return CustomFilledButton(
+                onPressed: () {
+                  Get.dialog(
+                    Center(
                       child: Container(
-                        padding: const EdgeInsets.all(15),
-                        child: Image.asset(
-                          'assets/ic_close.png',
-                          width: 25,
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        height: 360,
+                        width: MediaQuery.of(context).size.width - 52,
+                        decoration: BoxDecoration(
+                            color: neutral100,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Image.asset(
+                                    'assets/images/ic_close.png',
+                                    width: 25,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const SizedBox(
+                                    height: 42,
+                                  ),
+                                  Image.asset(
+                                    'assets/images/img_grafis1.png',
+                                    width: 140,
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30),
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                'Pengajuan kehadiran Clock out pada',
+                                            style: plusJakartaSansTextStyle
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: neutral600),
+                                          ),
+                                          TextSpan(
+                                            text: ' 05 Oktober 2023 ',
+                                            style: plusJakartaSansTextStyle
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: neutral600,
+                                                    fontWeight: bold),
+                                          ),
+                                          TextSpan(
+                                            text: 'telah terkirim',
+                                            style: plusJakartaSansTextStyle
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: neutral600),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  CustomFilledButton(
+                                    title: 'Kembali',
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    height: 45,
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
-                  ),
-                  Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 42,
-                        ),
-                        Image.asset(
-                          'assets/img_grafis1.png',
-                          width: 140,
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Pengajuan kehadiran Clock out pada',
-                                  style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 12, color: neutral600),
-                                ),
-                                TextSpan(
-                                  text: ' 05 Oktober 2023 ',
-                                  style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 12,
-                                      color: neutral600,
-                                      fontWeight: bold),
-                                ),
-                                TextSpan(
-                                  text: 'telah terkirim',
-                                  style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 12, color: neutral600),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        CustomFilledButton(
-                          title: 'Kembali',
-                          onPressed: () {
-                            Get.back();
-                          },
-                          height: 45,
-                        )
-                      ],
-                    ),
-                  )
-                ],
-                          ),
-                        ),
-              ),
-       );
-            },
-            title: 'Kirim',
-          ),
-        ),
+                  );
+                },
+                title: 'Kirim',
+                isActive: controller.clockin.value != '' &&
+                        controller.clockout.value != '' &&
+                        controller.nameDokumen.value != '' &&
+                        controller.textDeskripsi.value != ''
+                    ? true
+                    : false,
+              );
+            })),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView(
@@ -143,13 +157,14 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
           const SizedBox(
             height: 19,
           ),
+
           Align(
             alignment: Alignment.center,
             child: Column(
               children: [
                 Text(
                   DateFormat('dd MMMM yyyy').format(dateTime),
-                  style: GoogleFonts.plusJakartaSans(
+                  style: plusJakartaSansTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 18,
                       color: neutral600),
@@ -158,7 +173,7 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
                   height: 5,
                 ),
                 Text('Pagi (07.00 - 12.00)',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: plusJakartaSansTextStyle.copyWith(
                         fontWeight: FontWeight.w400,
                         fontSize: 11,
                         color: const Color(0xFF83858A))),
@@ -168,6 +183,7 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
           const SizedBox(
             height: 5.5,
           ),
+          // Clock In
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 14),
@@ -184,14 +200,14 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(
-                      'assets/ic_calendar_colored.png',
+                      'assets/images/ic_calendar_colored.png',
                       width: 24,
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     Text('Clock in',
-                        style: GoogleFonts.plusJakartaSans(
+                        style: plusJakartaSansTextStyle.copyWith(
                             fontWeight: FontWeight.w400,
                             fontSize: 11,
                             color: neutral600)),
@@ -220,7 +236,7 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
                                 ),
                                 Text(
                                   'Pada ${pengajuanController.clockin.value}',
-                                  style: GoogleFonts.plusJakartaSans(
+                                  style: plusJakartaSansTextStyle.copyWith(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xFF45484F)),
@@ -237,6 +253,7 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
           const SizedBox(
             height: 16,
           ),
+          // Clock Out
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 14),
@@ -253,14 +270,14 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(
-                      'assets/ic_calendar_colored.png',
+                      'assets/images/ic_calendar_colored.png',
                       width: 24,
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     Text('Clock out',
-                        style: GoogleFonts.plusJakartaSans(
+                        style: plusJakartaSansTextStyle.copyWith(
                             fontWeight: FontWeight.w400,
                             fontSize: 11,
                             color: neutral600)),
@@ -289,7 +306,7 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
                                 ),
                                 Text(
                                   'Pada ${pengajuanController.clockout.value}',
-                                  style: GoogleFonts.plusJakartaSans(
+                                  style: plusJakartaSansTextStyle.copyWith(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xFF45484F)),
@@ -306,12 +323,15 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
           const SizedBox(
             height: 16,
           ),
+          // Unggah Dokumen
           CustomUploadImagePath(
-              title: 'Image Path',
-              controllerImage: pengajuanController.dokumenController),
+            title: 'Image Path',
+            controllerImage: pengajuanController.dokumenController,
+          ),
           const SizedBox(
             height: 16,
           ),
+          // Deskripsi
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 14),
@@ -332,14 +352,14 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'assets/ic_plus_colored.png',
+                        'assets/images/ic_plus_colored.png',
                         width: 24,
                       ),
                       const SizedBox(
                         width: 10,
                       ),
                       Text('Deskripsi',
-                          style: GoogleFonts.plusJakartaSans(
+                          style: plusJakartaSansTextStyle.copyWith(
                               fontWeight: FontWeight.w400,
                               fontSize: 11,
                               color: neutral600)),
@@ -352,12 +372,17 @@ class PengajuanKehadiranView extends GetView<PengajuanKehadiranController> {
                         ? Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 34),
                             child: TextFormField(
+                              onChanged: (value) {
+                                controller.textDeskripsi.value = value;
+                              },
                               focusNode: pengajuanController.textFocus,
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: '',
+                                hintText: 'Masukkan Deskripsi',
+                                hintStyle: plusJakartaSansTextStyle.copyWith(
+                                    color: neutral200),
                               ),
-                              style: GoogleFonts.plusJakartaSans(
+                              style: plusJakartaSansTextStyle.copyWith(
                                   fontSize: 12,
                                   color: neutral700,
                                   fontWeight: bold),

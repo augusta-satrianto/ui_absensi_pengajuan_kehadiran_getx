@@ -7,10 +7,11 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  file_picker: ^5.5.0
   flutter:
     sdk: flutter
+  flutter_pdfview: ^1.3.2
   get: 4.6.6
-  google_fonts: ^6.1.0
   image_picker: ^1.0.4
   intl: ^0.18.1
   path: ^1.8.3
@@ -25,4 +26,31 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/images/
+
+  fonts:
+    - family: PlusJakartaSans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Bold.ttf
+          weight: 700
+
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter/Inter-Light.otf
+          weight: 300
+        - asset: assets/fonts/Inter/Inter-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Inter/Inter-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Inter/Inter-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/Inter/Inter-Bold.otf
+          weight: 700

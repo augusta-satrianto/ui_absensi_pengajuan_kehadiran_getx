@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ui_absensi_pengajuan_kehadiran_getx/app/modules/riwayat_presensi/views/riwayat_presensi_view.dart';
+
 import 'package:ui_absensi_pengajuan_kehadiran_getx/config/theme.dart';
 
+import '../../presensi/views/presensi_view.dart';
 import '../controllers/base_controller.dart';
 
 class BaseView extends GetView<BaseController> {
@@ -21,10 +21,17 @@ class BaseView extends GetView<BaseController> {
             children: const [
               Scaffold(
                 body: Center(
-                  child: Text('Beranda Page'),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Beranda Page',
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              RiwayatPresensiView(),
+              PresensiView(),
               Scaffold(
                 body: Center(
                   child: Text('Tugas Page'),
@@ -55,29 +62,29 @@ class BaseView extends GetView<BaseController> {
           selectedItemColor: primaryMain,
           unselectedItemColor: neutral300,
           selectedLabelStyle:
-              GoogleFonts.inter(fontWeight: medium, fontSize: 10),
+              interTextStyle.copyWith(fontWeight: medium, fontSize: 10),
           unselectedLabelStyle:
-              GoogleFonts.inter(fontWeight: medium, fontSize: 10),
+              interTextStyle.copyWith(fontWeight: medium, fontSize: 10),
           items: [
             _mBottomNavItem(
               label: 'Beranda',
-              icon: 'assets/ic_home.png',
+              icon: 'assets/images/ic_home.png',
             ),
             _mBottomNavItem(
               label: 'Presensi',
-              icon: 'assets/ic_presensi.png',
+              icon: 'assets/images/ic_presensi.png',
             ),
             _mBottomNavItem(
               label: 'Tugas',
-              icon: 'assets/ic_task.png',
+              icon: 'assets/images/ic_task.png',
             ),
             _mBottomNavItem(
               label: 'Notifikasi',
-              icon: 'assets/ic_notification.png',
+              icon: 'assets/images/ic_notification.png',
             ),
             _mBottomNavItem(
               label: 'Akun',
-              icon: 'assets/ic_account.png',
+              icon: 'assets/images/ic_account.png',
             ),
           ],
           onTap: controller.changeScreen,

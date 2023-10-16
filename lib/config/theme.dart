@@ -35,6 +35,11 @@ Color warning1000 = const Color(0xff553A00);
 // Danger Color
 Color danger600 = const Color(0xffE2313D);
 
+// Font Family
+TextStyle interTextStyle = const TextStyle(fontFamily: 'Inter');
+TextStyle plusJakartaSansTextStyle =
+    const TextStyle(fontFamily: 'PlusJakartaSans');
+
 // Font Weight
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;

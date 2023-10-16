@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:intl/intl.dart';
 import 'package:ui_absensi_pengajuan_kehadiran_getx/config/theme.dart';
 
@@ -27,17 +27,20 @@ class CalendarHeader extends StatelessWidget {
             width: 120.0,
             child: Text(
               headerText,
-              style: GoogleFonts.inter(fontSize: 13.06, fontWeight: bold),
+              style: interTextStyle.copyWith(
+                  fontSize: 13.06, fontWeight: bold, color: neutral600),
             ),
           ),
           const Spacer(),
           IconButton(
             icon: const Icon(Icons.chevron_left),
             onPressed: onLeftArrowTap,
+            color: neutral300,
           ),
           IconButton(
             icon: const Icon(Icons.chevron_right),
             onPressed: onRightArrowTap,
+            color: neutral300,
           ),
         ],
       ),

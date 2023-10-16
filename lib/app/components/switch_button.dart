@@ -89,7 +89,7 @@ class _StyledSwitchState extends State<StyledSwitch> {
               ? null
               : Center(
                   child: Image.asset(
-                  'assets/ic_check.png',
+                  'assets/images/ic_check.png',
                   width: 7,
                 )),
         ),
